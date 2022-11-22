@@ -1,6 +1,6 @@
 :root {
-    --backgroundStart: ;
-    --backgroundEnd: ;
+    --backgroundStart: url(./themes/day/day1.jpg);
+    --backgroundEnd: url(./themes/day/day2.jpg);
 }
 
 * {
@@ -8,7 +8,7 @@
     padding: 0;
 }
 
-#background.slide {
+.slide {
     position: fixed;
     top: 0;
     background-position: center;
@@ -16,14 +16,19 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
-    animation: slide 2s forwards;
+    animation: slide 5s;
 }
+/* TESTES */
+#btnRain, #btnNight, #btnDay {
+    position: relative;
+}
+/* TESTES */
 
 @keyframes slide {
     from{
-        background-image: var(--bgstart);
+        background-image: var(--backgroundStart);
     }
     to{
-        background-image: var(--bgend);
+        background-image: var(--backgroundEnd);
     }
 }
