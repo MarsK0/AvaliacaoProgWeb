@@ -8,44 +8,56 @@ let arrBackgroundIndex = 1
 
 background.classList.toggle('slide')
 
-// ROTINA PARA TROCA DE TEMA DINÂMICA
-background.addEventListener('animationend', ()=>{
-    if(currentBackgroundTheme === previousBackgroundTheme){
-        if(arrBackgroundIndex == (arrBackground.length-1)){
-            document.body.style.setProperty('--backgroundStart', arrBackground[arrBackgroundIndex])
-            document.body.style.setProperty('--backgroundEnd', arrBackground[0])
-            arrBackgroundIndex=0
-        }else{
-            document.body.style.setProperty('--backgroundStart', arrBackground[arrBackgroundIndex])
-            document.body.style.setProperty('--backgroundEnd', arrBackground[arrBackgroundIndex+1])
-            arrBackgroundIndex++
-        }
-        background.classList.toggle('slide')
-        void background.offsetWidth
-        background.classList.toggle('slide')
-    }else{
-        previousBackgroundTheme = currentBackgroundTheme
+//Verifica se houve troca de tema
+function themeUnchanged(){
+    return (currentBackgroundTheme === previousBackgroundTheme)
+}
 
-        document.body.style.setProperty('--backgroundStart', arrBackground[arrBackgroundIndex])
-        document.body.style.setProperty('--backgroundEnd', theme(currentBackgroundTheme)[0])
+//Caso haja troca de tema, faz as alterações para a troca dinâmica
+function themeChange(){
+    document.body.style.setProperty('--backgroundEnd', theme(currentBackgroundTheme)[0])
+    arrBackgroundIndex=0
+    previousBackgroundTheme = currentBackgroundTheme
+}
 
-        arrBackgroundIndex=0
-        arrBackground = theme(currentBackgroundTheme)
-
-        background.classList.toggle('slide')
-        void background.offsetWidth
-        background.classList.toggle('slide')
+//Verifica se deve reiniciar o índice do array dos backgrounds
+function checkBackgroundIndex(){
+    function isLastBackground(){
+        return arrBackgroundIndex + 1 === arrBackground.length
     }
-})
 
-btnNight.addEventListener('click', ()=>{
-    currentBackgroundTheme = 'night'
-})
+    arrBackgroundIndex = isLastBackground() ? -1 : arrBackgroundIndex
+}
 
-btnRain.addEventListener('click', ()=>{
-    currentBackgroundTheme = 'rain'
-})
+//Define o background inicial da animação de acordo com o índice
+function themeStartBackground(){
+    document.body.style.setProperty('--backgroundStart', arrBackground[arrBackgroundIndex])
+}
 
-btnDay.addEventListener('click',()=>{
-    currentBackgroundTheme = 'day'
+//Define o background final da animação de acordo com o índice
+function themeEndBackground(){
+    document.body.style.setProperty('--backgroundEnd', arrBackground[arrBackgroundIndex+1])
+}
+
+//Inicia a animação de troca de background
+function startSlide(){
+    background.classList.toggle('slide')
+    void background.offsetWidth
+    background.classList.toggle('slide')
+}
+
+//Evento de troca dinâmica dos slides
+background.addEventListener('animationend', ()=>{
+    if(themeUnchanged()){
+        themeStartBackground()
+        checkBackgroundIndex()
+        themeEndBackground()
+        arrBackgroundIndex++
+        startSlide()
+    }else{
+        themeStartBackground()
+        themeChange()
+        arrBackground = theme(currentBackgroundTheme)
+        startSlide()
+    }
 })

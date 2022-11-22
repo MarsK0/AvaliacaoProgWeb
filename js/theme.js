@@ -14,3 +14,7 @@ export function theme(theme){
     }
     return arrBackground
 }
+
+export let runTheme = {
+    
+}
