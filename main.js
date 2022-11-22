@@ -15,9 +15,10 @@ function themeUnchanged(){
 
 //Caso haja troca de tema, faz as alterações para a troca dinâmica
 function themeChange(){
+    previousBackgroundTheme = currentBackgroundTheme
+    arrBackground = theme(currentBackgroundTheme)
     document.body.style.setProperty('--backgroundEnd', theme(currentBackgroundTheme)[0])
     arrBackgroundIndex=0
-    previousBackgroundTheme = currentBackgroundTheme
 }
 
 //Verifica se deve reiniciar o índice do array dos backgrounds
@@ -57,7 +58,6 @@ background.addEventListener('animationend', ()=>{
     }else{
         themeStartBackground()
         themeChange()
-        arrBackground = theme(currentBackgroundTheme)
         startSlide()
     }
 })
