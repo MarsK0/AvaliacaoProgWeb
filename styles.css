@@ -10,9 +10,20 @@
 
 .navBar {
     position: relative;
+    display: inline-blick;
     z-index: 1;
     width: 100vw;
     height: 5vh;
+}
+
+#themeList {
+    position: relative;
+    display: inline-block;
+}
+
+#themeSongPlayer {
+    position: relative;
+    display: inline-block;
 }
 
 .slide {

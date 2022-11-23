@@ -16,6 +16,11 @@
             <option value="night">Noite</option>
             <option value="rain">Chuva</option>
         </select>
+        <div id="themeSongPlayer">
+            <audio id="themeSong" src="./themes/themeSong.mp3" loop></audio>
+            <input type="range" name="themeSongVolume" id="themeSongVolume" min="1" max="100">
+            <button id="btnThemeSongPlay" style="width: 2vw;">|></button>
+        </div>
     </header>
     <div id="background"></div>
     <script type="module" src="./js/theme.js"></script>
