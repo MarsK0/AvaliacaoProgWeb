@@ -2,6 +2,11 @@ const themeDay = ['url(./themes/day/day1.jpg)','url(./themes/day/day2.jpg)','url
 const themeNight = ['url(./themes/night/night1.jpg)','url(./themes/night/night2.jpg)','url(./themes/night/night3.jpg)','url(./themes/night/night4.jpg)','url(./themes/night/night5.jpg)']
 const themeRain = ['url(./themes/rain/rain1.jpg)','url(./themes/rain/rain2.jpg)','url(./themes/rain/rain3.jpg)','url(./themes/rain/rain4.jpg)','url(./themes/rain/rain5.jpg)']
 
+let previousBackgroundTheme = 'day'
+let currentBackgroundTheme = 'day'
+let arrBackground = theme(currentBackgroundTheme)
+let arrBackgroundIndex = 1
+
 function theme(theme){
     let arrBackground
     if(theme === 'day'){
@@ -13,12 +18,6 @@ function theme(theme){
     }
     return arrBackground
     }
-
-
-let previousBackgroundTheme = 'day'
-let currentBackgroundTheme = 'day'
-let arrBackground = theme(currentBackgroundTheme)
-let arrBackgroundIndex = 1
 
 background.classList.toggle('slide')
 
@@ -75,14 +74,6 @@ export function runTheme(){
     }
 }
 
-btnNight.addEventListener('click', ()=>{
-    currentBackgroundTheme = 'night'
-})
-
-btnRain.addEventListener('click', ()=>{
-    currentBackgroundTheme = 'rain'
-})
-
-btnDay.addEventListener('click', ()=>{
-    currentBackgroundTheme = 'day'
-})
+document.getElementById('themeList').onchange = function(){
+    currentBackgroundTheme = document.getElementById('themeList').value
+}

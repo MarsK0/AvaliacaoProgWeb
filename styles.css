@@ -8,6 +8,13 @@
     padding: 0;
 }
 
+.navBar {
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    height: 5vh;
+}
+
 .slide {
     position: fixed;
     top: 0;
@@ -18,11 +25,6 @@
     height: 100%;
     animation: slide 5s;
 }
-/* TESTES */
-#btnRain, #btnNight, #btnDay {
-    position: relative;
-}
-/* TESTES */
 
 @keyframes slide {
     from{
