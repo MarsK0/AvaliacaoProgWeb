@@ -1,6 +1,7 @@
 const themeDay = ['url(./themes/day/day1.jpg)','url(./themes/day/day2.jpg)','url(./themes/day/day3.jpg)','url(./themes/day/day4.jpg)','url(./themes/day/day5.jpg)']
 const themeNight = ['url(./themes/night/night1.jpg)','url(./themes/night/night2.jpg)','url(./themes/night/night3.jpg)','url(./themes/night/night4.jpg)','url(./themes/night/night5.jpg)']
 const themeRain = ['url(./themes/rain/rain1.jpg)','url(./themes/rain/rain2.jpg)','url(./themes/rain/rain3.jpg)','url(./themes/rain/rain4.jpg)','url(./themes/rain/rain5.jpg)']
+const background = document.getElementById('background')
 
 let previousBackgroundTheme = 'day'
 let currentBackgroundTheme = 'day'
@@ -60,18 +61,21 @@ function startSlide(){
     background.classList.toggle('slide')
 }
 
+//Evento de troca dinâmica dos slides
 export function runTheme(){
-    if(themeUnchanged()){
-        themeStartBackground()
-        checkBackgroundIndex()
-        themeEndBackground()
-        arrBackgroundIndex++
-        startSlide()
-    }else{
-        themeStartBackground()
-        themeChange()
-        startSlide()
-    }
+    background.addEventListener('animationend', ()=>{
+        if(themeUnchanged()){
+            themeStartBackground()
+            checkBackgroundIndex()
+            themeEndBackground()
+            arrBackgroundIndex++
+            startSlide()
+        }else{
+            themeStartBackground()
+            themeChange()
+            startSlide()
+        }
+    }) 
 }
 
 document.getElementById('themeList').onchange = function(){
