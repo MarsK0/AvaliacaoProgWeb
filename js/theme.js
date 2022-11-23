@@ -2,6 +2,7 @@ const themeDay = ['url(./themes/day/day1.jpg)','url(./themes/day/day2.jpg)','url
 const themeNight = ['url(./themes/night/night1.jpg)','url(./themes/night/night2.jpg)','url(./themes/night/night3.jpg)','url(./themes/night/night4.jpg)','url(./themes/night/night5.jpg)']
 const themeRain = ['url(./themes/rain/rain1.jpg)','url(./themes/rain/rain2.jpg)','url(./themes/rain/rain3.jpg)','url(./themes/rain/rain4.jpg)','url(./themes/rain/rain5.jpg)']
 const background = document.getElementById('background')
+const themeList = document.getElementById('themeList')
 
 let previousBackgroundTheme = 'day'
 let currentBackgroundTheme = 'day'
@@ -64,6 +65,7 @@ function startSlide(){
 //Evento de troca dinâmica dos slides
 export function runTheme(){
     background.addEventListener('animationend', ()=>{
+        themeList.disabled = false
         if(themeUnchanged()){
             themeStartBackground()
             checkBackgroundIndex()
@@ -78,6 +80,7 @@ export function runTheme(){
     }) 
 }
 
-document.getElementById('themeList').onchange = function(){
-    currentBackgroundTheme = document.getElementById('themeList').value
+themeList.onchange = function(){
+    themeList.disabled = true
+    currentBackgroundTheme = themeList.value
 }
