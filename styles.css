@@ -10,7 +10,7 @@
 
 .navBar {
     position: relative;
-    display: inline-blick;
+    display: inline-block;
     z-index: 1;
     width: 100vw;
     height: 5vh;
