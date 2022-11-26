@@ -1,18 +1,15 @@
 const themeSong = document.getElementById('themeSong')
-const themeSongVolume = document.getElementById('themeSongVolume')
 
 function themeSongPlay(){
-    btnThemeSongPlay.innerText = '| |'
+    btnThemeSongPlay.style.backgroundImage = 'url(./assets/pause.png)'
+    btnThemeSongPlay.style.backgroundPosition = '0'
     themeSong.play()
 }
 
 function themeSongPause(){
-    btnThemeSongPlay.innerText = '|>'
+    btnThemeSongPlay.style.backgroundImage = 'url(./assets/play.png)'
+    btnThemeSongPlay.style.backgroundPosition = '.1rem'
     themeSong.pause()
-}
-
-function themeSongSetVolume(){
-    themeSong.volume = (themeSongVolume.value)/100
 }
 
 export function themeSongPlayer(){
@@ -23,15 +20,4 @@ export function themeSongPlayer(){
             themeSongPause()
         }
     })
-    
-    themeSongVolume.oninput = function(){
-        console.log(themeSongVolume.value)
-        if(themeSongVolume.value == 0){
-            themeSongPause()
-        }else{
-            themeSongPlay()
-            themeSongSetVolume()
-        }
-        
-    }
 }
