@@ -3,6 +3,7 @@ const themeNight = ['url(./themes/night/night1.jpg)','url(./themes/night/night2.
 const themeRain = ['url(./themes/rain/rain1.jpg)','url(./themes/rain/rain2.jpg)','url(./themes/rain/rain3.jpg)','url(./themes/rain/rain4.jpg)','url(./themes/rain/rain5.jpg)']
 const background = document.getElementById('background')
 const themeList = document.getElementById('themeList')
+const themeOptionButton = Array.from(themeList.querySelectorAll('button'))
 
 let previousBackgroundTheme = 'day'
 let currentBackgroundTheme = 'day'
@@ -25,14 +26,14 @@ background.classList.toggle('slide')
 
 //Habilita/Desabilita botões de troca de tema
 function themeListAble(){
-    const themeOptionButton = Array.from(themeList.querySelectorAll('button'))
     themeOptionButton.forEach(e => {
-        if(e.disabled){
             e.disabled = false
-        }else{
+    })
+}
+
+function themeListDisable(){
+    themeOptionButton.forEach(e => {
             e.disabled = true
-        }
-        
     })
 }
 
@@ -93,13 +94,15 @@ export function runTheme(){
     }) 
 }
 
-themeList.addEventListener('click', (e)=>{
-    const isNotButton = !e.target.nodeName === 'BUTTON';
+//Gerencia o evento de clique da troca de temas
 
+themeList.addEventListener('click', (e)=>{
+    const isNotButton = !(e.target.nodeName === 'BUTTON');
+    console.log(e.target.nodeName)
     if(isNotButton){
         return
     }
 
-    themeListAble()
+    themeListDisable()
     currentBackgroundTheme = e.target.value
 })
