@@ -23,6 +23,19 @@ function theme(theme){
 
 background.classList.toggle('slide')
 
+//Habilita/Desabilita botões de troca de tema
+function themeListAble(){
+    const themeOptionButton = Array.from(themeList.querySelectorAll('button'))
+    themeOptionButton.forEach(e => {
+        if(e.disabled){
+            e.disabled = false
+        }else{
+            e.disabled = true
+        }
+        
+    })
+}
+
 //Verifica se houve troca de tema
 function themeUnchanged(){
     return (currentBackgroundTheme === previousBackgroundTheme)
@@ -65,7 +78,7 @@ function startSlide(){
 //Evento de troca dinâmica dos slides
 export function runTheme(){
     background.addEventListener('animationend', ()=>{
-        themeList.disabled = false
+        themeListAble()
         if(themeUnchanged()){
             themeStartBackground()
             checkBackgroundIndex()
@@ -80,7 +93,13 @@ export function runTheme(){
     }) 
 }
 
-themeList.onchange = function(){
-    themeList.disabled = true
-    currentBackgroundTheme = themeList.value
-}
+themeList.addEventListener('click', (e)=>{
+    const isNotButton = !e.target.nodeName === 'BUTTON';
+
+    if(isNotButton){
+        return
+    }
+
+    themeListAble()
+    currentBackgroundTheme = e.target.value
+})

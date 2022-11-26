@@ -49,31 +49,29 @@
 }
 
 #themeList button:hover {
-    z-index: 10;
-    width: 7.5vw;
-    height: auto;
-    margin: .5%;
-    border-radius: 1vw;
-    background-color: rgba(255, 255, 255, 0);
+    width: 8vw;
 }
 
-#themeSongPlayer {
+#btnThemeSongPlay {
     position: fixed;
     display: inline-block;
     top: 50%;
     transform: translateY(-50%);
-    left: 65%;
-}
-
-#btnThemeSongPlay {
+    left: 77.5%;
+    transform: translate(-50%, -50%);
     width: 3.5vw;
     height: 3.5vw;
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0 );
     background-image: url(./assets/play.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: .1rem;
     border-radius: 50%;
+}
+
+#btnThemeSongPlay:hover {
+    width: 3.75vw;
+    height: 3.75vw;
 }
 
 /* Estilização Slides */
