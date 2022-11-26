@@ -3,6 +3,11 @@
     --backgroundEnd: url(./themes/day/day2.jpg);
 }
 
+@font-face {
+    font-family: 'theme';
+    src: url('./assets/fonts/theme.ttf') format('truetype'); 
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -44,4 +49,110 @@
     to{
         background-image: var(--backgroundEnd);
     }
+}
+
+/* Estilização Formulários */
+
+.form h1 {
+    margin-bottom: 5%;
+    font-family: 'theme', Times, Serif;
+    font-weight: lighter;
+    font-size: 3rem;
+}
+
+.form {
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 2.5%;    
+    position: fixed;
+    display: grid;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2vw;
+    border: solid 0.75vh black;
+    box-shadow: .2em .2em rgba(0, 0, 0, .5);
+}
+
+.form input {
+    position: relative;
+    padding: .30em;
+    padding-left: .2em;
+    padding-right: .2em;
+    height: 50%;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    border-bottom: solid .2rem;
+    background-color: transparent;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.form input:focus {
+    outline: none;
+    position: relative;
+    padding: .30em;
+    padding-left: .4em;
+    padding-right: .4em;;
+    height: 50%;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    border-bottom: solid .2rem;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.form label {
+    position: relative;
+    width: 100%;
+    margin-bottom: 4%;
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+
+.formNav {
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 2.5%;
+    display: inline-block;
+    vertical-align: bottom;
+    position: relative;
+    width: 100%;
+    height: 2rem;
+}
+
+.formNav button{
+    background-color: rgba(255, 255, 255, 0); 
+    display: inline-block;
+    position: absolute;
+    width: 45%;
+    height: 120%;
+    border-radius: 1em;
+    border: solid .2rem black;
+    font-family: 'theme', Times, Serif;
+    font-weight: lighter;
+    font-size: 1.75rem;
+}
+
+.formNav .formAnchor {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    left: 55%;
+}
+
+.formNav .formAnchor a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: black;
+}
+
+.formNav .formAnchor a:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+    color: black;
 }
