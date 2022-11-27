@@ -1,4 +1,5 @@
 const themeSong = document.getElementById('themeSong')
+const btnThemeSongPlay = document.getElementsByClassName('btnThemeSongPlay')[0]
 
 function themeSongPlay(){
     btnThemeSongPlay.style.backgroundImage = 'url(./assets/pause.png)'

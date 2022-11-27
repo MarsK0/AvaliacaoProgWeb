@@ -21,7 +21,7 @@
     display: inline-block;
     z-index: 1;
     width: 12.5vw;
-    height: 7.5vh;
+    height: 12.5vh;
     top: 1%;
     left: 50%;
     padding: 1vh;
@@ -29,17 +29,33 @@
     border-radius: 1vw;
     border: solid 0.5vh black;
     box-shadow: .2em .2em rgba(0, 0, 0, .5);
+    text-align: center;
 }
 
-#themeList {
+#navBarHome {
+    left: .5%;
+    transform: translateX(0);
+}
+
+.navBar h2 {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'theme', Times, serif;
+    font-size: 1.75rem;
+    font-weight: lighter;
+}
+
+.themeList {
     position: fixed;
     display: grid;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%);
     left: 2%;
 }
-
-#themeList button {
+.themeList button {
     z-index: 10;
     width: 7.5vw;
     height: auto;
@@ -48,14 +64,14 @@
     background-color: rgba(255, 255, 255, 0);
 }
 
-#themeList button:hover {
+.themeList button:hover {
     width: 8vw;
 }
 
-#btnThemeSongPlay {
+.btnThemeSongPlay {
     position: fixed;
     display: inline-block;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%);
     left: 77.5%;
     transform: translate(-50%, -50%);
@@ -69,7 +85,7 @@
     border-radius: 50%;
 }
 
-#btnThemeSongPlay:hover {
+.btnThemeSongPlay:hover {
     width: 3.75vw;
     height: 3.75vw;
 }
@@ -170,17 +186,28 @@
     height: 2rem;
 }
 
-.formNav button{
+.formNav button {
     background-color: rgba(255, 255, 255, 0); 
     display: inline-block;
     position: absolute;
     width: 45%;
     height: 120%;
+    left: 25%;
     border-radius: 1em;
     border: solid .2rem black;
     font-family: 'theme', Times, Serif;
     font-weight: lighter;
     font-size: 1.75rem;
+    transform: translateX(-50%);
+    box-shadow: .1rem .1rem black;
+}
+
+.formNav button:hover {
+    background-color: rgba(99, 99, 99, 0.5);
+}
+
+.formNav button:active {
+    background-color: rgba(99, 99, 99, 0.5);
 }
 
 .formNav .formAnchor {

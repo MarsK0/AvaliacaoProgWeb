@@ -1,8 +1,8 @@
 const themeDay = ['url(./themes/day/day1.jpg)','url(./themes/day/day2.jpg)','url(./themes/day/day3.jpg)','url(./themes/day/day4.jpg)','url(./themes/day/day5.jpg)']
 const themeNight = ['url(./themes/night/night1.jpg)','url(./themes/night/night2.jpg)','url(./themes/night/night3.jpg)','url(./themes/night/night4.jpg)','url(./themes/night/night5.jpg)']
 const themeRain = ['url(./themes/rain/rain1.jpg)','url(./themes/rain/rain2.jpg)','url(./themes/rain/rain3.jpg)','url(./themes/rain/rain4.jpg)','url(./themes/rain/rain5.jpg)']
-const background = document.getElementById('background')
-const themeList = document.getElementById('themeList')
+const background = document.getElementsByClassName('background')[0]
+const themeList = document.getElementsByClassName('themeList')[0]
 const themeOptionButton = Array.from(themeList.querySelectorAll('button'))
 
 let previousBackgroundTheme = 'day'
@@ -98,7 +98,6 @@ export function runTheme(){
 
 themeList.addEventListener('click', (e)=>{
     const isNotButton = !(e.target.nodeName === 'BUTTON');
-    console.log(e.target.nodeName)
     if(isNotButton){
         return
     }

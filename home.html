@@ -11,15 +11,16 @@
     <audio id="themeSong" src="./themes/themeSong.mp3" loop></audio>
 </head>
 <body>
-    <header class="navBar">
-        <div id="themeList">
+    <header class="navBar" id="navBarHome">
+        <h2>Controle do Tema:</h2>
+        <div class="themeList">
             <button id="themeOptionDay" value="day">Dia</button>
             <button id="themeOptionNight" value="night">Noite</button>
             <button id="themeOptionRain" value="rain">Chuva</button>
         </div>
-        <button id="btnThemeSongPlay"></button>
+        <button class="btnThemeSongPlay"></button>
     </header>
-    <div id="background"></div>
+    <div class="background"></div>
     
     <script type="module" src="main.js"></script>
 </body>
