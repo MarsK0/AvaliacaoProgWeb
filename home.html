@@ -26,8 +26,28 @@
             <button id="editMsgCancel">CANCELAR</button>
         </div>
     </header>
-    <div id="tableMsgList">
-        
+    <div id="divTableMsgList">
+        <table id="tableMsgList">
+            <thead>
+                <tr>
+                    <th id="thId">#</th>
+                    <th id="thDesc">Descrição</th>
+                    <th id="thDetail">Detalhamento</th>
+                    <th id="thAction">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>TESTE</td>
+                    <td>lorem Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae nulla perspiciatis atque? Quae labore assumenda, perferendis cum, similique odio veritatis aliquam, libero id cupiditate in natus beatae eaque architecto quasi.</td>
+                    <td class="tdBotao">
+                        <button class="tableMsgListEdit">EDITAR</button>
+                        <button class="tableMsgListDelete">EXCLUIR</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div class="background"></div>
     <script type="module" src="main.js"></script>

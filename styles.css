@@ -261,7 +261,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
 #editMsgSave {
     position: absolute;
     width: 10%;
@@ -269,13 +268,18 @@
     left: 77.5%;
     border: solid 2px black;
     border-radius: 1vh;
-    background-color: rgba(0, 255, 30, 0.25);
+    background-color: rgba(0, 255, 0, 0.25);
     font-weight: bold;
 }
 
 #editMsgSave:hover {
-    background-color: rgba(0, 255, 30, 0.75);
+    background-color: rgba(0, 255, 0, 0.5);
 }
+
+#editMsgSave:active {
+    background-color: rgba(0, 255, 0, 1);
+}
+
 
 #editMsgCancel {
     position: absolute;
@@ -289,5 +293,96 @@
 }
 
 #editMsgCancel:hover {
-    background-color: rgba(255, 0, 0, 0.75);
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+#editMsgCancel:active {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+/* Estilização lista de mensagens */
+
+#divTableMsgList {
+    background-color: rgba(255, 255, 255, 0.55);
+    z-index: 1;
+    position: absolute;
+    width: 98%;
+    height: 75%;
+    left: .5%;
+    top: 20%;
+    padding: 0 .5%;
+    border-radius: 1vw;
+    overflow-y: scroll;
+}
+
+#tableMsgList {
+    z-index: 2;
+    position: relative;
+    width: 99%;
+    left: .5%;
+    border-collapse: collapse;
+}
+
+#tableMsgList tbody > tr {
+    border-bottom: solid 1px black ;
+}
+
+#tableMsgList  th {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    color: white;
+}
+
+#thId {
+    width: 5%;
+}
+
+#thDesc {
+    width: 20%;
+}
+
+#thDetail {
+    width: 65%;
+}
+
+#thAction {
+    width: 10%;
+}
+
+#tableMsgList  td {
+    padding: 0.5%;
+}
+
+.tableMsgListEdit, .tableMsgListDelete {
+    position: relative;
+    width: 100%;
+    border: solid 1px black;
+    border-radius: 1vh;
+    font-weight: bold;
+}
+
+.tableMsgListEdit {
+    margin-bottom: 1%;
+    background-color: rgba(0, 255, 0, 0.25);
+}
+
+.tableMsgListEdit:hover {
+    background-color: rgba(0, 255, 0, 0.5);
+}
+
+.tableMsgListEdit:active {
+    background-color: rgba(0, 255, 0, 1);
+}
+
+.tableMsgListDelete {
+    background-color: rgba(255, 0, 0, 0.25);
+}
+
+.tableMsgListDelete:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.tableMsgListDelete:active {
+    background-color: rgba(255, 0, 0, 1);
 }
