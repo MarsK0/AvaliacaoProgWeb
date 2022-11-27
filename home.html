@@ -12,16 +12,24 @@
 </head>
 <body>
     <header class="navBar" id="navBarHome">
-        <h2>Controle do Tema:</h2>
+        <h2>Controles:</h2>
         <div class="themeList">
             <button id="themeOptionDay" value="day">Dia</button>
             <button id="themeOptionNight" value="night">Noite</button>
             <button id="themeOptionRain" value="rain">Chuva</button>
         </div>
-        <button class="btnThemeSongPlay"></button>
+        <button class="btnThemeSongPlay" id="btnThemeSongPlayHome"></button>
+        <div id="formMsg">
+            <input type="text" id="editMsgDesc" placeholder="Descrição">
+            <textarea id="editMsgDetail" rows="3" placeholder="Detalhamento"></textarea>
+            <button id="editMsgSave">SALVAR</button>
+            <button id="editMsgCancel">CANCELAR</button>
+        </div>
     </header>
+    <div id="tableMsgList">
+        
+    </div>
     <div class="background"></div>
-    
     <script type="module" src="main.js"></script>
 </body>
 </html>
