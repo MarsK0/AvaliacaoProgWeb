@@ -74,3 +74,44 @@ function deleteMsg(tableMsgListDelete){
     const msgRow = tableMsgListDelete.parentElement.parentElement
     const msgId = msgRow.querySelector('td').innerHTML
 }
+
+function geraTabela(){
+    const tbody = document.getElementsByTagName('tbody')[0]
+    tbody.innerHTML = ''
+
+    const userLogin = JSON.parse(localStorage.getItem('userLogin'))
+    const userLoginArrMsg = userLogin.arrMsg
+
+    userLoginArrMsg.forEach((e, i)=>{
+        let row = document.createElement('tr')
+        let msgId = document.createElement('td')
+        let msgDesc = document.createElement('td')
+        let msgDetail = document.createElement('td')
+        let rowButtons = document.createElement('td')
+        let btnMsgListEdit = document.createElement('button')
+        let btnMsgListDelete = document.createElement('button')
+    
+        btnMsgListEdit.classList.add('tableMsgListEdit')
+        btnMsgListEdit.setAttribute('onclick','editMSg(this)')
+        btnMsgListEdit.innerHTML = 'EDITAR'
+
+        btnMsgListDelete.classList.add('tableMsgListDelete')
+        btnMsgListDelete.setAttribute('onclick','deleteMsg(this)')
+        btnMsgListDelete.innerHTML = 'EXCLUIR'
+
+        rowButtons.appendChild(btnMsgListEdit)
+        rowButtons.appendChild(btnMsgListDelete)
+
+        msgId.innerHTML = i+1
+        msgDesc.innerHTML = e[0]
+        msgDetail.innerHTML = e[1]
+
+        row.appendChild(msgId)
+        row.appendChild(msgDesc)
+        row.appendChild(msgDetail)
+        row.appendChild(rowButtons)
+
+        tbody.appendChild(row)
+    })
+    
+}
