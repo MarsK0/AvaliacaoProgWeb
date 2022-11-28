@@ -1,5 +1,3 @@
-import {User} from '../main.js'
-
 formLoginBtnLogin.addEventListener('click', ()=>{
     let username = document.getElementById('formLoginInputUser').value
     let pass = document.getElementById('formLoginInputPass').value
@@ -31,12 +29,13 @@ function checkBlankFields(username, pass){
 
 function checkLogin(username, pass, users){
     let login
-    users.forEach(e => {
+    users.forEach((e,i) => {
         username = username.toLowerCase()
         let cadUser = e.username
         let cadPass = e.password
         if(cadUser === username && cadPass === pass){
             login = e
+            login.id = i
         }
     })
     return login
