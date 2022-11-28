@@ -15,8 +15,8 @@ editMsgSave.addEventListener('click', ()=>{
         userLoginArrMsg.push(arrMsg)
         localStorage.setItem('userLogin',JSON.stringify(userLogin))
 
-        editMsgDescVal = ''
-        editMsgDetailVal = ''
+        editMsgDesc.value = ''
+        editMsgDetail.value = ''
     }else{
         if(editMsgDesc.value === '' || editMsgDetail.value === ''){
             alert('Preencha ambos os campos!')
@@ -43,13 +43,15 @@ editMsgSave.addEventListener('click', ()=>{
 })
 
 editMsgCancel.addEventListener('click',()=>{
+    let editMsgDesc = document.getElementById('editMsgDesc')
+    let editMsgDetail = document.getElementById('editMsgDetail')
     if(msgGlobalId === -1){
-        let editMsgDesc = document.getElementById('editMsgDesc')
-        let editMsgDetail = document.getElementById('editMsgDetail')
         editMsgDesc.value = ''
         editMsgDetail.value = ''
     }else{
-        //rotina para cancelar a ediçao da mensagem
+        editMsgDesc.value = ''
+        editMsgDetail.value = ''
+        msgGlobalId = -1
     }
 })
 
