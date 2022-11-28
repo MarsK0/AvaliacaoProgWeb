@@ -16,7 +16,7 @@
 /* Estilização controles */
 
 .navBar {
-    background-color: rgba(255, 255, 255, 0.55);
+    background-color: rgba(255, 255, 255, 0.35);
     position: fixed;
     display: inline-block;
     z-index: 1;
@@ -127,7 +127,7 @@
 }
 
 .form {
-    background-color: rgba(255, 255, 255, 0.55);
+    background-color: rgba(255, 255, 255, 0.35);
     padding: 2.5%;    
     position: fixed;
     display: grid;
@@ -196,15 +196,17 @@
     font-size: 1.75rem;
     transform: translateX(-50%);
     box-shadow: .1rem .1rem black;
+    outline: none;
 }
 
 .formNav button:hover {
     background-color: rgba(99, 99, 99, 0.5);
 }
 
-.formNav button:active {
+.formNav button:active, .form button:focus {
     background-color: rgba(99, 99, 99, 1);
 }
+
 
 .formNav .formAnchor {
     display: inline-block;
@@ -303,7 +305,7 @@
 /* Estilização lista de mensagens */
 
 #divTableMsgList {
-    background-color: rgba(255, 255, 255, 0.55);
+    background-color: rgba(255, 255, 255, 0.35);
     z-index: 1;
     position: absolute;
     width: 98%;
