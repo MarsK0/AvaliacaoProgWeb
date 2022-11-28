@@ -8,8 +8,8 @@ formRegisterBtnRegister.addEventListener('click',()=>{
     
     if(!checkBlankFields(username, pass, repeatPass)){
         alert('Preencha todos os campos!')
-         return
-     }
+        return
+    }
     if(!usernameAvailable(username, users)){
         alert('Usuário indisponível')
         return
