@@ -1,8 +1,7 @@
 let msgGlobalId = -1
 const tbody = document.getElementsByTagName('tbody')[0]
-console.log(tbody.textContent)
 
-if(tbody.textContent === ''){
+if(tbody.children.length === 0){
     geraTabela()
 }
 
