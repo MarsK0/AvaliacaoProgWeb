@@ -22,7 +22,7 @@ formRegisterBtnRegister.addEventListener('click',()=>{
     let newUser = new User(username, pass, [])
     users.push(newUser)
     localStorage.setItem('users', JSON.stringify(users))
-    window.location.href = '../index.html'     
+    window.location.href = './index.html'     
 })
 
 function usernameAvailable(username, users){
