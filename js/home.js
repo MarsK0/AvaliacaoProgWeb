@@ -58,6 +58,7 @@ editMsgSave.addEventListener('click', ()=>{
 editMsgCancel.addEventListener('click',()=>{
     let editMsgDesc = document.getElementById('editMsgDesc')
     let editMsgDetail = document.getElementById('editMsgDetail')
+
     if(msgGlobalId === -1){
         editMsgDesc.value = ''
         editMsgDetail.value = ''
@@ -68,6 +69,41 @@ editMsgCancel.addEventListener('click',()=>{
     }
 })
 
+//DECLARAÇÕES DE FUNCTIONS ========================================================
+
+
+function geraTabela(){
+    tbody.innerHTML = ''
+
+    const userLogin = JSON.parse(localStorage.getItem('userLogin'))
+    const userLoginArrMsg = userLogin.arrMsg
+
+    if(userLoginArrMsg != null){
+        userLoginArrMsg.forEach((e, i)=>{
+            const row = document.createElement('tr')
+            const msgId = document.createElement('td')
+            const msgDesc = document.createElement('td')
+            const msgDetail = document.createElement('td')
+            const rowButtons = document.createElement('td')
+            const btnMsgListEdit = document.createElement('button')
+            const btnMsgListDelete = document.createElement('button')
+            
+            btnMsgListEdit = createBtnMsgListEdit(btnMsgListEdit)
+            btnMsgListDelete = createBtnMsgListDelete(btnMsgListDelete)
+            rowButtons = appendButtons(btnMsgListEdit, btnMsgListDelete, rowButtons)
+    
+            msgId.innerHTML = i+1
+            msgDesc.innerHTML = e[0]
+            msgDetail.innerHTML = e[1]
+    
+            appendElementsInRow(msgId, msgDesc, msgDetail, rowButtons)
+    
+            tbody.appendChild(row)
+        })
+    }
+}
+
+//Functions auxiliares geraTabela()
 function editMsg(tableMsgListEdit){
     let editMsgDesc = document.getElementById('editMsgDesc')
     let editMsgDetail = document.getElementById('editMsgDetail')
@@ -103,42 +139,36 @@ function deleteMsg(tableMsgListDelete){
     geraTabela()
 }
 
-function geraTabela(){
-    tbody.innerHTML = ''
+function createBtnMsgListEdit(btnMsgListEdit){
+    btnMsgListEdit.classList.add('tableMsgListEdit')
+    btnMsgListEdit.setAttribute('onclick','editMsg(this)')
+    btnMsgListEdit.innerHTML = 'EDITAR'
 
-    const userLogin = JSON.parse(localStorage.getItem('userLogin'))
-    const userLoginArrMsg = userLogin.arrMsg
-    if(userLoginArrMsg != null){
-        userLoginArrMsg.forEach((e, i)=>{
-            let row = document.createElement('tr')
-            let msgId = document.createElement('td')
-            let msgDesc = document.createElement('td')
-            let msgDetail = document.createElement('td')
-            let rowButtons = document.createElement('td')
-            let btnMsgListEdit = document.createElement('button')
-            let btnMsgListDelete = document.createElement('button')
-        
-            btnMsgListEdit.classList.add('tableMsgListEdit')
-            btnMsgListEdit.setAttribute('onclick','editMsg(this)')
-            btnMsgListEdit.innerHTML = 'EDITAR'
-    
-            btnMsgListDelete.classList.add('tableMsgListDelete')
-            btnMsgListDelete.setAttribute('onclick','deleteMsg(this)')
-            btnMsgListDelete.innerHTML = 'EXCLUIR'
-    
-            rowButtons.appendChild(btnMsgListEdit)
-            rowButtons.appendChild(btnMsgListDelete)
-    
-            msgId.innerHTML = i+1
-            msgDesc.innerHTML = e[0]
-            msgDetail.innerHTML = e[1]
-    
-            row.appendChild(msgId)
-            row.appendChild(msgDesc)
-            row.appendChild(msgDetail)
-            row.appendChild(rowButtons)
-    
-            tbody.appendChild(row)
-        })
-    }
+    return btnMsgListEdit
 }
+
+function createBtnMsgListDelete(btnMsgListDelete){
+    btnMsgListDelete.classList.add('tableMsgListDelete')
+    btnMsgListDelete.setAttribute('onclick','deleteMsg(this)')
+    btnMsgListDelete.innerHTML = 'EXCLUIR'
+
+    return btnMsgListDelete
+}
+
+function appendButtons(btnMsgListEdit, btnMsgListDelete, rowButtons){
+    rowButtons.appendChild(btnMsgListEdit)
+    rowButtons.appendChild(btnMsgListDelete)
+
+    return rowButtons
+}
+
+function appendElementsInRow(msgId, msgDesc, msgDetail, rowButtons){
+    row.appendChild(msgId)
+    row.appendChild(msgDesc)
+    row.appendChild(msgDetail)
+    row.appendChild(rowButtons)
+
+    return row
+}
+
+

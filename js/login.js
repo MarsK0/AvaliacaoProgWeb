@@ -24,7 +24,7 @@ formLoginBtnLogin.addEventListener('click', ()=>{
     window.location.href = './home.html'
 })
 
-//DECLARAÇÕES DE FUNCTIONS
+//DECLARAÇÕES DE FUNCTIONS ========================================================
 
 function checkBlankFields(username, pass){
     let filledFields = true

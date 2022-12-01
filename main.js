@@ -14,7 +14,8 @@ setUserAdmin()
 runTheme()
 themeSongPlayer()
 
-//DECLARAÇÃO DE FUNCTIONS
+//DECLARAÇÕES DE FUNCTIONS ========================================================
+
 function setUserAdmin(){
     let users = JSON.parse(localStorage.getItem('users'))
     let userAdmin = new User('admin','admin',[])

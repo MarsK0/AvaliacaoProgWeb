@@ -30,6 +30,8 @@ formRegisterBtnRegister.addEventListener('click',()=>{
     registerUser(username, pass)
 })
 
+//DECLARAÇÕES DE FUNCTIONS ========================================================
+
 function usernameAvailable(username, users){
     let availability = true
     
