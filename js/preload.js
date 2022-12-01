@@ -2,7 +2,7 @@ const themeDay = ['./themes/day/day1.jpg','./themes/day/day2.jpg','./themes/day/
 const themeNight = ['./themes/night/night1.jpg','./themes/night/night2.jpg','./themes/night/night3.jpg','./themes/night/night4.jpg','./themes/night/night5.jpg']
 const themeRain = ['./themes/rain/rain1.jpg','./themes/rain/rain2.jpg','./themes/rain/rain3.jpg','./themes/rain/rain4.jpg','./themes/rain/rain5.jpg']
 
-themeDay.forEach((e,i)=>{
+themeDay.forEach((e)=>{
     const link = document.createElement('link')
     link.setAttribute('rel','preload')
     link.setAttribute('as','image')
@@ -10,7 +10,7 @@ themeDay.forEach((e,i)=>{
     document.getElementsByTagName('head')[0].appendChild(link)
 })
 
-themeNight.forEach((e,i)=>{
+themeNight.forEach((e)=>{
     const link = document.createElement('link')
     link.setAttribute('rel','preload')
     link.setAttribute('as','image')
@@ -18,7 +18,7 @@ themeNight.forEach((e,i)=>{
     document.getElementsByTagName('head')[0].appendChild(link)
 })
 
-themeRain.forEach((e,i)=>{
+themeRain.forEach((e)=>{
     const link = document.createElement('link')
     link.setAttribute('rel','preload')
     link.setAttribute('as','image')
