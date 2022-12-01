@@ -27,7 +27,7 @@ formRegisterBtnRegister.addEventListener('click',()=>{
     }
 
     //EFETIVAÇÃO DO CADASTRO
-    registerUser(username, pass)
+    registerUser(username, pass, users)
 })
 
 //DECLARAÇÕES DE FUNCTIONS ========================================================
@@ -61,7 +61,7 @@ function passMatch(pass, repeatPass){
     return passMatches
 }
 
-function registerUser(username, pass){
+function registerUser(username, pass, users){
     let newUser = new User(username, pass, [])
     users.push(newUser)
     localStorage.setItem('users', JSON.stringify(users))

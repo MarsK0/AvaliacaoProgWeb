@@ -84,9 +84,9 @@ function geraTabela(){
             const msgId = document.createElement('td')
             const msgDesc = document.createElement('td')
             const msgDetail = document.createElement('td')
-            const rowButtons = document.createElement('td')
-            const btnMsgListEdit = document.createElement('button')
-            const btnMsgListDelete = document.createElement('button')
+            let rowButtons = document.createElement('td')
+            let btnMsgListEdit = document.createElement('button')
+            let btnMsgListDelete = document.createElement('button')
             
             btnMsgListEdit = createBtnMsgListEdit(btnMsgListEdit)
             btnMsgListDelete = createBtnMsgListDelete(btnMsgListDelete)
@@ -96,7 +96,7 @@ function geraTabela(){
             msgDesc.innerHTML = e[0]
             msgDetail.innerHTML = e[1]
     
-            appendElementsInRow(msgId, msgDesc, msgDetail, rowButtons)
+            appendElementsInRow(msgId, msgDesc, msgDetail, rowButtons, row)
     
             tbody.appendChild(row)
         })
@@ -162,7 +162,7 @@ function appendButtons(btnMsgListEdit, btnMsgListDelete, rowButtons){
     return rowButtons
 }
 
-function appendElementsInRow(msgId, msgDesc, msgDetail, rowButtons){
+function appendElementsInRow(msgId, msgDesc, msgDetail, rowButtons, row){
     row.appendChild(msgId)
     row.appendChild(msgDesc)
     row.appendChild(msgDetail)
