@@ -5,24 +5,29 @@ formRegisterBtnRegister.addEventListener('click',()=>{
     let pass = document.getElementById('formRegisterInputPass').value
     let repeatPass = document.getElementById('formRegisterInputRepeatPass').value
     let users = JSON.parse(localStorage.getItem('users'))
+
+    //DECLARAÇÃO DE VARIÁVEIS QUE RECEBEM O RETORNO DAS FUNCTIONS
     
-    if(!checkBlankFields(username, pass, repeatPass)){
+    const thereIsBlankFields = !checkBlankFields(username, pass, repeatPass)
+    const usernameIsUnavailable = !usernameAvailable(username, users)
+    const passwordsDontMatch = !passMatch(pass, repeatPass)
+    
+    //ROTINA DE CHECAGEM
+    if(thereIsBlankFields){
         alert('Preencha todos os campos!')
         return
     }
-    if(!usernameAvailable(username, users)){
+    if(usernameIsUnavailable){
         alert('Usuário indisponível')
         return
     }
-    if(!passMatch(pass, repeatPass)){
+    if(passwordsDontMatch){
         alert('As senhas não coincidem')
         return
     }
 
-    let newUser = new User(username, pass, [])
-    users.push(newUser)
-    localStorage.setItem('users', JSON.stringify(users))
-    window.location.href = './index.html'     
+    //EFETIVAÇÃO DO CADASTRO
+    registerUser(username, pass)
 })
 
 function usernameAvailable(username, users){
@@ -52,4 +57,11 @@ function passMatch(pass, repeatPass){
         passMatches = false
     }
     return passMatches
+}
+
+function registerUser(username, pass){
+    let newUser = new User(username, pass, [])
+    users.push(newUser)
+    localStorage.setItem('users', JSON.stringify(users))
+    window.location.href = './index.html'     
 }

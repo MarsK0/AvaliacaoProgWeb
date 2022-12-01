@@ -9,6 +9,12 @@ export class User {
     }
 }
 
+//ROTINA PRINCIPAL
+setUserAdmin()
+runTheme()
+themeSongPlayer()
+
+//DECLARAÇÃO DE FUNCTIONS
 function setUserAdmin(){
     let users = JSON.parse(localStorage.getItem('users'))
     let userAdmin = new User('admin','admin',[])
@@ -19,6 +25,3 @@ function setUserAdmin(){
     }
 }
 
-setUserAdmin()
-runTheme()
-themeSongPlayer()

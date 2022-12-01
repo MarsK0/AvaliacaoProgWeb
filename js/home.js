@@ -8,6 +8,7 @@ if(tbody.children.length === 0){
 editMsgSave.addEventListener('click', ()=>{
     let editMsgDesc = document.getElementById('editMsgDesc')
     let editMsgDetail = document.getElementById('editMsgDetail')
+    
     if(msgGlobalId === -1){
         if(editMsgDesc.value === '' || editMsgDetail.value === ''){
             alert('Preencha ambos os campos!')
