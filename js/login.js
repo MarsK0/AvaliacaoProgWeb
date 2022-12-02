@@ -19,11 +19,13 @@ formLoginBtnLogin.addEventListener('click', ()=>{
 //DECLARAÇÕES DE FUNCTIONS ========================================================
 
 function isThereBlankFields(username, pass){
-    if(username === ''){
+    if(username === '' || username.trim() === ''){
         document.getElementById('formLoginInputUser').focus()
+        document.getElementById('formLoginInputUser').value = ''
         throwAlertError('Preencha todos os campos!')
-    }else if(pass === ''){
+    }else if(pass === '' || pass.trim() === ''){
         document.getElementById('formLoginInputPass').focus()
+        document.getElementById('formLoginInputPass').value = ''
         throwAlertError('Preencha todos os campos!')
     }
 }

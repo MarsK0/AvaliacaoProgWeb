@@ -9,6 +9,7 @@ formRegisterBtnRegister.addEventListener('click',()=>{
 
     //ROTINA DE CHECAGEM
     isThereBlankFields(username, pass, repeatPass)
+    checkSpaceInPass(pass)
     isUsernameAvailable(username, users)
     checkPasswordsMatch(pass, repeatPass)
 
@@ -30,13 +31,15 @@ function isUsernameAvailable(username, users){
 }
 
 function isThereBlankFields(username, pass, repeatPass){
-    if(username === ''){
+    if(username === '' || username.trim() === ''){
         document.getElementById('formRegisterInputUser').focus()
+        document.getElementById('formRegisterInputUser').value = ''
         throwAlertError('Preencha todos os campos!')
     }else if(pass === ''){
         document.getElementById('formRegisterInputPass').focus()
+        document.getElementById('formRegisterInputPass').value = ''
         throwAlertError('Preencha todos os campos!')
-    }else if(pass === ''){
+    }else if(repeatPass === ''){
         document.getElementById('formRegisterInputRepeatPass').focus()
         throwAlertError('Preencha todos os campos!')
     }
@@ -54,4 +57,11 @@ function registerUser(username, pass, users){
     users.push(newUser)
     localStorage.setItem('users', JSON.stringify(users))
     window.location.href = './index.html'     
+}
+
+function checkSpaceInPass(pass){
+    if(pass.indexOf(' ') >= 0){
+        document.getElementById('formRegisterInputPass').focus()
+        throwAlertError('É vetado o uso do caractere espaço na senha!')
+    }
 }
