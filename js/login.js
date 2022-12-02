@@ -1,37 +1,38 @@
+import { throwAlertError } from '../main.js'
+
 formLoginBtnLogin.addEventListener('click', ()=>{
     let username = document.getElementById('formLoginInputUser').value
     let pass = document.getElementById('formLoginInputPass').value
     let users = JSON.parse(localStorage.getItem('users'))
-
+    
     //DECLARAÇÃO DE VARIÁVEIS QUE RECEBEM O RETORNO DAS FUNCTIONS
-    const thereIsBlankFields = !checkBlankFields(username, pass)
     const userLogin = checkLogin(username, pass, users)
-    const credentialsDontMatch = !userLogin
 
     //ROTINA DE CHECAGEM
-    if(thereIsBlankFields){
-        alert('Preencha todos os campos!')
-        return
-    }
-    
-    if(credentialsDontMatch){
-        alert('Combinação de usuário e senha incorreta')
-        return
-    }
+    isThereBlankFields(username, pass)
+    isCredentialsMatching(userLogin)
 
     //EFETIVAÇÃO DO LOGIN
-    localStorage.setItem('userLogin', JSON.stringify(userLogin))
-    window.location.href = './home.html'
+    login(userLogin)
 })
 
 //DECLARAÇÕES DE FUNCTIONS ========================================================
 
-function checkBlankFields(username, pass){
-    let filledFields = true
-    if(username === '' || pass === ''){
-        filledFields = false
+function isThereBlankFields(username, pass){
+    if(username === ''){
+        document.getElementById('formLoginInputUser').focus()
+        throwAlertError('Preencha todos os campos!')
+    }else if(pass === ''){
+        document.getElementById('formLoginInputPass').focus()
+        throwAlertError('Preencha todos os campos!')
     }
-    return filledFields
+}
+
+function isCredentialsMatching(userLogin){
+    if(!userLogin){
+        document.getElementById('formLoginInputUser').focus()
+        throwAlertError('Combinação de usuário e senha incorreta')
+    }
 }
 
 function checkLogin(username, pass, users){
@@ -48,4 +49,9 @@ function checkLogin(username, pass, users){
         }
     })
     return login
+}
+
+function login(userLogin){
+    localStorage.setItem('userLogin', JSON.stringify(userLogin))
+    window.location.href = './home.html'
 }

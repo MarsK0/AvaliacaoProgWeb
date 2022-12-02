@@ -26,3 +26,8 @@ function setUserAdmin(){
     }
 }
 
+export function throwAlertError(errorMsg){
+    alert(errorMsg)
+    throw new Error(errorMsg)
+}
+

@@ -1,4 +1,5 @@
-import {User} from '../main.js'
+import { User } from '../main.js'
+import { throwAlertError } from '../main.js'
 
 formRegisterBtnRegister.addEventListener('click',()=>{
     let username = document.getElementById('formRegisterInputUser').value
@@ -6,25 +7,10 @@ formRegisterBtnRegister.addEventListener('click',()=>{
     let repeatPass = document.getElementById('formRegisterInputRepeatPass').value
     let users = JSON.parse(localStorage.getItem('users'))
 
-    //DECLARAÇÃO DE VARIÁVEIS QUE RECEBEM O RETORNO DAS FUNCTIONS
-    
-    const thereIsBlankFields = !checkBlankFields(username, pass, repeatPass)
-    const usernameIsUnavailable = !usernameAvailable(username, users)
-    const passwordsDontMatch = !passMatch(pass, repeatPass)
-    
     //ROTINA DE CHECAGEM
-    if(thereIsBlankFields){
-        alert('Preencha todos os campos!')
-        return
-    }
-    if(usernameIsUnavailable){
-        alert('Usuário indisponível')
-        return
-    }
-    if(passwordsDontMatch){
-        alert('As senhas não coincidem')
-        return
-    }
+    isThereBlankFields(username, pass, repeatPass)
+    isUsernameAvailable(username, users)
+    checkPasswordsMatch(pass, repeatPass)
 
     //EFETIVAÇÃO DO CADASTRO
     registerUser(username, pass, users)
@@ -32,33 +18,35 @@ formRegisterBtnRegister.addEventListener('click',()=>{
 
 //DECLARAÇÕES DE FUNCTIONS ========================================================
 
-function usernameAvailable(username, users){
-    let availability = true
-    
+function isUsernameAvailable(username, users){
     users.forEach(e => {
     username = username.toLowerCase()
     let userRegistered = e.username
     if(userRegistered === username){
-        availability = false
+        document.getElementById('formRegisterInputUser').focus()
+        throwAlertError('Usuário indisponível')
     }
     })
-    return availability
 }
 
-function checkBlankFields(username, pass, repeatPass){
-    let filledFields = true
-    if(username === '' || pass === '' || repeatPass === ''){
-        filledFields = false
+function isThereBlankFields(username, pass, repeatPass){
+    if(username === ''){
+        document.getElementById('formRegisterInputUser').focus()
+        throwAlertError('Preencha todos os campos!')
+    }else if(pass === ''){
+        document.getElementById('formRegisterInputPass').focus()
+        throwAlertError('Preencha todos os campos!')
+    }else if(pass === ''){
+        document.getElementById('formRegisterInputRepeatPass').focus()
+        throwAlertError('Preencha todos os campos!')
     }
-    return filledFields
 }
 
-function passMatch(pass, repeatPass){
-    let passMatches = true
+function checkPasswordsMatch(pass, repeatPass){
     if(pass != repeatPass){
-        passMatches = false
+        document.getElementById('formRegisterInputRepeatPass').focus()
+        throwAlertError('As senhas não coincidem!')
     }
-    return passMatches
 }
 
 function registerUser(username, pass, users){
